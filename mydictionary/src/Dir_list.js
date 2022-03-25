@@ -54,20 +54,21 @@ const Dir_list = () => {
 }
 const List_Design = styled.div`
     background-color: #E0F8EC;
-    width: 100vw;
+    overflow-y : scroll;
+    margin : auto;
+    width: 80vw;
+    min-width : 40vw;
     display: flex;
     .list_box {
-        margin : auto;
-        overflow:scroll;
-        display : grid;
-        grid-template-columns: repeat(3,minmax(16rem, auto));
-        row-gap : 30px;
-        column-gap : 30px;
+        display : flex;
+        flex-flow : row wrap;
+        justify-content : center;
+        align-items: center;
+        align-content: stretch;
     }
     .card_box{
-        margin-top : 30px;
-        margin-bottom : 30px;
-        width : 40rem;
+        margin : 30px;
+        width : 35rem;
         height : 18rem;
         border : 3px solid black;
         border-radius : 10px;
