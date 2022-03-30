@@ -1,49 +1,68 @@
 import React, { useEffect } from "react";
 import {Card} from 'react-bootstrap'
 import styled from "styled-components";
-import {useSelector} from 'react-redux'
+import {useSelector,useDispatch} from 'react-redux'
 import {BsPlusSquare} from 'react-icons/bs'
 import {BsXCircle} from 'react-icons/bs'
-
+import {db} from './firebase'
+import {collection, getDoc, getDocs} from 'firebase/firestore'
+import {loadvoca_fb,updatevoca_fb,deletevoca_fb } from './redux/modules/voca'
+import { Link, useHistory, useParams } from "react-router-dom";
 
 const Dir_list = () => {
+    const dispatch = useDispatch();
     const dir_list = useSelector((state) => state.voca.list);
+    const history = useHistory();
+    console.log('dir_list');
     console.log(dir_list);
-
-    const update_btn = () => {
-        window.alert('수정클릭!');
+    
+    const update_btn = (id , u_data) => {
+        window.alert('수정클릭! id는' + id);
     }
 
-    const delete_btn = () => {
-        window.alert('삭제클릭!');
+    const delete_btn = (id) => {
+        window.alert('삭제클릭! id는' + id) ;
+        dispatch(deletevoca_fb(id));
     }
+
+    React.useEffect(async() => {
+        dispatch(loadvoca_fb());
+        
+        return {
+
+        };
+    },[])
+
 
     return (
         <List_Design>
             <div className="list_box">
             {dir_list.map((el,idx) => {
-                    console.log(el)
-                    const voca_name = el[0];
-                    const voca_read = el[1];
-                    const voca_sementic = el[2];
-                    const voca_example = el[3];
                     return (
-                        <div key={idx}>
+                        <div key={el.id}>
                            <div className="card_box">
                                 <article>
-                                    <h5><strong>{voca_name}</strong></h5>
+                                    <h5><strong>{el.data.DATA.name}</strong></h5>
                                     <article className="btn_group">
                                         <article className="update_voca">
-                                            <BsPlusSquare size={30} onClick={update_btn} color='black'/>
+                                            <Link to = {
+                                                {
+                                                    pathname: '/registration',
+                                                    search : '',
+                                                    hash : '',
+                                                    state : {data : el}
+                                                }}>
+                                                <BsPlusSquare size={30} onClick={() => {update_btn(el.id,el.data.DATA)}} color='black'/>
+                                            </Link>
                                         </article>
                                         <article className="delete_voca">
-                                            <BsXCircle size={30}  onClick={delete_btn} color='black'/>
+                                            <BsXCircle size={30}  onClick={() => {delete_btn(el.id)}} color='black'/>
                                         </article>
                                     </article>
                                 </article>
-                                <h6>{voca_read}</h6>
-                                <p className="sementic">{voca_sementic}</p>
-                                <p className="example">{voca_example}</p>
+                                <h6>{el.data.DATA.read}</h6>
+                                <p className="sementic">{el.data.DATA.sementic}</p>
+                                <p className="example">{el.data.DATA.example}</p>
                             </div>     
                         </div>
                     );
@@ -54,7 +73,6 @@ const Dir_list = () => {
 }
 const List_Design = styled.div`
     background-color: #E0F8EC;
-    overflow-y : scroll;
     margin : auto;
     width: 80vw;
     min-width : 40vw;
@@ -68,7 +86,7 @@ const List_Design = styled.div`
     }
     .card_box{
         margin : 30px;
-        width : 35rem;
+        width : 33rem;
         height : 18rem;
         border : 3px solid black;
         border-radius : 10px;
