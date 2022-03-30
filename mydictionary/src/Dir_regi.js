@@ -1,11 +1,16 @@
 import React from "react";
-
+import styled from "styled-components";
 const Dir_regi = (props) => {
     return (
-        <div>
-            등록컴포넌트입니다.
-        </div>
+        <Dir_regi_design>
+        
+        </Dir_regi_design>
     );
 }
+
+const Dir_regi_design = styled.div`
+    
+    
+`;
 
 export default Dir_regi;

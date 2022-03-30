@@ -1,27 +1,30 @@
 import React, { useEffect, useRef } from "react";
 import styled from "styled-components";
 import { MdOutlinePostAdd } from "react-icons/md";
-import {useHistory} from "react-router-dom"
+import {Link, useHistory} from "react-router-dom"
 
 const Dir_add_btns = (props) => {
     const click_ref = React.useRef(null);
     const history = useHistory();
-
-    const regi_move = () => {
-        history.push('/registration');
+    const datas = {
+        up_id : '',
+        up_data : ''
     }
-
-    React.useEffect (() => {
-        click_ref.current.addEventListener('click',() => {regi_move()});
-        return () => {
-            click_ref.current.removeEventListener('click',() => {regi_move()});
-        };
-    },[])
+    const regi_move = () => {
+        // history.push('/registration');
+    }
 
     return (
         <Btn_design>
             <div className="circle">
-                <div ref={click_ref} className="btns"><MdOutlinePostAdd size={80}/></div>
+              <Link to = {
+                  {
+                    pathname: '/registration',
+                    search : '',
+                    hash : '',
+                    state : null
+                  }
+              }> <div ref={click_ref} className="btns"><MdOutlinePostAdd size={80}/></div></Link>
             </div>
         </Btn_design>
     );

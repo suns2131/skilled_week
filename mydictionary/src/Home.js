@@ -9,7 +9,7 @@ const Home = () => {
     
     return (
         <div>
-            <Dir_header title = {'나만의 사전'} />
+            <Dir_header title = {'나만의 사전'} sub_title = {'등록한 단어'} />
             <Dir_list />
             <Dir_add_btns/>
         </div>
