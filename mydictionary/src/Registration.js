@@ -19,8 +19,10 @@ const Registration = (props) =>{
     const history = useHistory();
     console.log(par2);
     const btn_click = () => {
+
         if(par2.state === null)
         {
+            if(voca_nm.current.value == '') history.push('/');
             let input_data = {
                 name : voca_nm.current.value,
                 read : voca_reading.current.value,
@@ -87,7 +89,7 @@ const Registration = (props) =>{
                     <h6>예시</h6>
                     <input ref={voca_exam} type='text'/>
                 </div>
-                <button ref={buttons}>추가하기</button>
+                <button ref={buttons}> <strong>추가하기</strong></button>
             </div>
             </Registration_design>
             
@@ -124,6 +126,8 @@ const Registration_design = styled.div`
         width : 100%;
         height : 50px;
         border-radius : 10px;
+        background-color : #5173EF;
+        color : white;
     }
 `;
 

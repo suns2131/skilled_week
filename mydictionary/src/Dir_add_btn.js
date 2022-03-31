@@ -34,7 +34,8 @@ const Btn_design = styled.div`
 .circle {
     margin: 10px;
     width: 150px;
-    background: gray;
+    background: white;
+    border : 5px solid #58ACFA;
     height: 150px;
     border-Radius:250px;
     position : fixed;

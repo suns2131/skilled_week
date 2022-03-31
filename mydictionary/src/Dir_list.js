@@ -17,11 +17,9 @@ const Dir_list = () => {
     console.log(dir_list);
     
     const update_btn = (id , u_data) => {
-        window.alert('수정클릭! id는' + id);
     }
 
     const delete_btn = (id) => {
-        window.alert('삭제클릭! id는' + id) ;
         dispatch(deletevoca_fb(id));
     }
 
@@ -72,7 +70,7 @@ const Dir_list = () => {
     );
 }
 const List_Design = styled.div`
-    background-color: #E0F8EC;
+    background-color: #fff;
     margin : auto;
     width: 80vw;
     min-width : 40vw;
@@ -86,9 +84,9 @@ const List_Design = styled.div`
     }
     .card_box{
         margin : 30px;
-        width : 33rem;
-        height : 18rem;
-        border : 3px solid black;
+        width : 25rem;
+        height : 15rem;
+        border : 3px solid #58ACFA;
         border-radius : 10px;
     }
     
@@ -104,7 +102,7 @@ const List_Design = styled.div`
         margin : auto;
     }
     .btn_group{
-        width : 15%;
+        width : 20%;
         margin-right : 20px;
         margin-top : 20px;
         display : flex;

@@ -17,7 +17,7 @@ const Home = () => {
 }
 
 const HomeStyle = styled.div`
-    background-color : #E0F8EC;
+    background-color : #fff;
 `;
 
 export default Home;
