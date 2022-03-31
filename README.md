@@ -34,11 +34,11 @@
 \<Link> 태그를 이용하여 'to' 프로퍼티의 객체 중 state인자 에 저장하여 페이지 이동 작업을 진행하였음.
 <br>
 <br>
-reducer 동작
-문제 
+reducer 동작<br>
+문제 <br>
 middleware에서 삭제 진행 후 삭제한 데이터의 반환이 이루어지지 않고 텅비어있는 state만 가져옴 
 
-해결 
+해결 <br>
 middleware에서 삭제 진행 후 dispatch를 통해서 삭제한 데이터의 인덱스를 전달하여 현재 state안에 있는 데이터를 삭제하지 않고 비어 있는 state를 반환하여 
 생기는 문제로 확인하여 reducer 함수내에 추가하여 해결하였음.
 
